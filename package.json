@@ -1,0 +1,30 @@
+{
+  "name": "lanchat",
+  "version": "1.0.0",
+  "description": "LanChat a media server goes ease and simple.",
+  "main": "activity.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SreejithNS/lanchat.git"
+  },
+  "keywords": [
+    "lanchat"
+  ],
+  "author": "Sreejith N",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/SreejithNS/lanchat/issues"
+  },
+  "homepage": "https://github.com/SreejithNS/lanchat#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "ip": "^1.1.5",
+    "multer": "^1.3.1",
+    "socket.io": "^2.1.1"
+  }
+}
