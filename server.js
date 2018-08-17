@@ -18,23 +18,15 @@ var log = (data,new,left) =>{
 
 
 app.get('/socket.io/socket.io.js', function(req, res) {
-   res.sendFile(__dirname+'/socket.io/socket.io.js');
+   res.sendFile(__dirname+'/res/socket.io/socket.io.js');
 });
 
 app.get('/', function(req, res) {
-   res.sendFile(__dirname+'/index.html');
-});
-
-app.get('/toastjs', function(req, res) {
-   res.sendFile(__dirname+'/node_modules/vanilla-toast/vanilla-toast.js');
-});
-
-app.get('/toastcss', function(req, res) {
-   res.sendFile(__dirname+'/node_modules/vanilla-toast/vanilla-toast.css');
+   res.sendFile(__dirname+'/res/index.html');
 });
 
 app.get('/css', function(req, res) {
-   res.sendFile(__dirname+'/css/index.css');
+   res.sendFile(__dirname+'/res/css/index.css');
 });
 
 
