@@ -10,10 +10,10 @@ var ip = require("ip");
 
 var log = (data,new,left) =>{
   console.clear();
-           console.log('SERVER       : URL http://' + ip.address() + ':3000/');
-           console.log("Users Online : " + data.size);
-  if(name) console.log("New User     : " + name);
-  if(left) console.log("User Gone    : " + left);
+           console.log('SERVER        : URL http://' + ip.address() + ':3000/');
+           console.log("Users Online  : " + data.size);
+  if(name) console.log("New Users     : " + name);
+  if(left) console.log("User Gone     : " + left);
 }
 
 
