@@ -4,7 +4,7 @@
   "description": "LanChat a media server goes ease and simple.",
   "main": "activity.js",
   "scripts": {
-    "test": "electron ."
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "ip": "^1.1.5",
     "multer": "^1.3.1",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "electron": "^2.0.7"
   }
 }

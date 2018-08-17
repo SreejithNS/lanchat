@@ -8,17 +8,17 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var ip = require("ip");
 
-var log = (data,new,left) =>{
+var log = (data,name,left) =>{
   console.clear();
-           console.log('SERVER        : URL http://' + ip.address() + ':3000/');
-           console.log("Users Online  : " + data.size);
-  if(name) console.log("New Users     : " + name);
-  if(left) console.log("User Gone     : " + left);
+           console.log('SERVER             : URL http://' + ip.address() + ':3000/');
+           console.log("Users Online       : " + data.size);
+  if(name) console.log("New Users          : " + name);
+  if(left) console.log("User Gone          : " + left);
 }
 
 
 app.get('/socket.io/socket.io.js', function(req, res) {
-   res.sendFile(__dirname+'/res/socket.io/socket.io.js');
+   res.sendFile(__dirname+'/socket.io/socket.io.js');
 });
 
 app.get('/', function(req, res) {
@@ -65,7 +65,7 @@ io.on('connection', function(socket) {
 console.log(connectedUserMap);
 
 http.listen(3000, function() {
-   console.log('SERVER       : URL http://' + ip.address() + ':3000/');
+   console.log('SERVER             : URL http://' + ip.address() + ':3000/');
 });
 
 }
