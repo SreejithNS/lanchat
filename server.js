@@ -1,5 +1,5 @@
 //LanChat @TealDuck
-//SERVER
+//SERVER - 1.0.0
 
 exports.lanchat = function(){
   
