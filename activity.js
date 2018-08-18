@@ -1,6 +1,7 @@
 //LanChat @TealDuck
 
 const {app, BrowserWindow} = require('electron');
+const ip = require("ip");
 
 const scan = require('./network.js');
 var net;
@@ -17,14 +18,14 @@ var net;
    			   alwaysOnTop : false,
    			   height: height,
    			   frame: false,
-   			   y: (parseInt(width)-400)
+   			   x: (parseInt(width)-400)
   	  	});
     if(url){
       win.loadURL('http://'+ url +':3000');
-      console.log('Window activity.js: win.window-opened at http://'+ url +':3000');
+      console.log('Window  activity.js: win.window-opened at http://'+ url +':3000');
     }else{
       win.loadURL('http://localhost:3000');
-      console.log('Window activity.js: win.window-opened at http://localhost:3000');
+      console.log('Window  activity.js: win.window-opened at http://'+ip.address()+':3000');
     }
 
 
@@ -36,7 +37,8 @@ var net;
       // Dereference the window object, usually you would store windows
       // in an array if your app supports multi windows, this is the time
       // when you should delete the corresponding element.
-      console.log('Window activity.js: win.closed');
+    
+      console.log('Window  activity.js: win.closed');
       win = null;
     });
   };
@@ -45,10 +47,10 @@ var net;
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   app.on('ready', ()=>{
-  	console.log('App activity.js: app.ready');
+  	console.log('App     activity.js: app.ready');
   	scan.network.on('netmod',function(d) {
-	if(!d) {console.log('Net activity.js: No Server found on network.');require('./server.js').lanchat();createWindow();}
-    else if(d) {console.log('Net activity.js: Server found at http://'+ d +':3000/');createWindow(d);};
+	      if(!d) {console.log('Net     activity.js: No Server found on network.'         );require('./server.js').lanchat(createWindow);}
+    else if(d) {console.log('Net     activity.js: Server found at http://'+ d +':3000/');createWindow(d);};
 	});
   });
 

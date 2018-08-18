@@ -1,8 +1,9 @@
 //LanChat @TealDuck
 //SERVER - 1.0.0
 
-exports.lanchat = function(){
-  
+exports.lanchat = function(call){
+
+var c = call;
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -10,11 +11,13 @@ var ip = require("ip");
 
 var log = (data,name,left) =>{
   console.clear();
-           console.log('SERVER             : URL http://' + ip.address() + ':3000/');
-           console.log("Users Online       : " + data.size);
-  if(name) console.log("New Users          : " + name);
-  if(left) console.log("User Gone          : " + left);
+           //console.log('SERVER             : URL http://' + ip.address() + ':3000/');
+           console.log("ActiveCli server.js: " + data.size);
+  if(name) console.log("NewCli    server.js: " + name);
+  if(left) console.log("LeftCli   server.js: " + left);
 }
+
+////////////////////////////////////  FILE SUPPLIERS ///////////////////////////////////////////
 
 
 app.get('/socket.io/socket.io.js', function(req, res) {
@@ -29,6 +32,10 @@ app.get('/css', function(req, res) {
    res.sendFile(__dirname+'/res/css/index.css');
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////  SERVER SOCKET ////////////////////////////////////////////
 
 var connectedUserMap = new Map();
 
@@ -62,10 +69,13 @@ io.on('connection', function(socket) {
   	})
 
 });
-console.log(connectedUserMap);
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 http.listen(3000, function() {
-   console.log('SERVER             : URL http://' + ip.address() + ':3000/');
+   console.log('Http      server.js: URL http://' + ip.address() + ':3000/');
+   c();
 });
 
 }
