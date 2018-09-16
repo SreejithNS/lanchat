@@ -2,6 +2,8 @@
 
 const {app, BrowserWindow} = require('electron');
 const ip = require("ip");
+var cmd = require("node-cmd");
+const publicIp = require('public-ip');
 
 const scan = require('./network.js');
 var net;
@@ -27,6 +29,17 @@ var net;
       win.loadURL('http://localhost:3000');
       console.log('Window  activity.js: win.window-opened at http://'+ip.address()+':3000');
     }
+    cmd.get("whoami",(err,data,stderr)=>{
+        publicIp.v4().then(ip => {
+        var a = ip;
+        var b = a.split(".");
+        var name = b.join("");
+        if(cmd.run("ssh -o ServerAliveInterval=60 -R chat"+name+".serveo.net:443:localhost:3000 serveo.net")){
+          console.log('cmd     activity.js: at https://chat'+name+'.serveo.net');
+        }
+        });
+      });
+    
 
 
     // Open the DevTools.
